@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<title>Tasbih Digital</title>
+<meta name="description" content="Tasbih digital: hitung zikir, atur target, lihat statistik, bisa dipakai offline.">
+<meta name="theme-color" content="#0a4a35">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri&family=Orbitron:wght@600;800&family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="zamrud">
+<div class="bg"></div>
+<main class="app">
+  <header class="top">
+    <div><h1>Tasbih Digital</h1><small id="date"></small></div>
+    <div class="ic"><button id="bSt" aria-label="Statistik">▥</button><button id="bSe" aria-label="Pengaturan">⚙</button></div>
+  </header>
+
+  <section class="zk glass" id="zk" role="button" tabindex="0" aria-label="Ganti zikir">
+    <div class="ar" id="ar"></div><strong id="lat"></strong><small id="mean"></small>
+  </section>
+
+  <section class="stage">
+    <div class="ringwrap" id="rw">
+      <svg viewBox="0 0 200 200" aria-hidden="true"><circle class="trk" cx="100" cy="100" r="92"/><circle id="ring" cx="100" cy="100" r="92"/></svg>
+      <div class="lcd"><small id="tgt"></small><div id="num">0000</div></div>
+      <button id="btn" aria-label="Hitung zikir"></button>
+    </div>
+    <div class="chips" id="chips">
+      <button class="tchip" data-t="33">33</button><button class="tchip" data-t="99">99</button><button class="tchip" data-t="100">100</button><button class="tchip" data-t="0">∞</button><button id="tCus" aria-label="Target sendiri">✎</button>
+    </div>
+  </section>
+
+  <section class="kpi">
+    <div class="glass"><b id="sRound">0</b><small>Putaran</small></div>
+    <div class="glass"><b id="sToday">0</b><small>Hari ini</small></div>
+    <div class="glass"><b id="sLife">0</b><small>Total</small></div>
+    <div class="glass"><b id="sStreak">0</b><small>Hari beruntun</small></div>
+  </section>
+
+  <nav class="acts">
+    <button id="bUndo">↶ Urungkan</button><button id="bReset">⟲ Ulang</button><button id="bSave" class="pri">Simpan</button><button id="bMy">Zikir saya</button>
+  </nav>
+</main>
+
+<div id="ov"></div>
+
+<aside class="sheet" id="sh-zk"><h2>Pilih zikir</h2><ul id="zl"></ul>
+  <div class="add"><input id="nLat" placeholder="Nama zikir baru"><input id="nAr" dir="rtl" placeholder="Teks Arab (opsional)"><input id="nT" type="number" inputmode="numeric" placeholder="Target"><button id="addZ" class="pri">Tambah zikir</button></div>
+</aside>
+<aside class="sheet" id="sh-st"><h2>Statistik</h2><div class="bars" id="bars"></div><h3>Total per zikir</h3><ul id="per"></ul></aside>
+<aside class="sheet" id="sh-my"><h2>Zikir saya</h2><ul id="my"></ul></aside>
+<aside class="sheet" id="sh-se"><h2>Pengaturan</h2>
+  <label class="row"><span>Suara klik</span><input type="checkbox" data-k="sound"></label>
+  <label class="row"><span>Getar</span><input type="checkbox" data-k="vib"></label>
+  <label class="row"><span>Layar tetap menyala</span><input type="checkbox" data-k="wake"></label>
+  <label class="row"><span>Ketuk di mana saja</span><input type="checkbox" data-k="any"></label>
+  <h3>Tema</h3>
+  <div class="themes"><button data-th="zamrud" aria-label="Zamrud"></button><button data-th="malam" aria-label="Malam"></button><button data-th="gading" aria-label="Gading"></button><button data-th="mawar" aria-label="Mawar"></button></div>
+  <p class="hint">Spasi atau Enter untuk menghitung, Backspace untuk mengurungkan.</p>
+  <button id="wipe" class="danger">Hapus semua data</button>
+</aside>
+<div id="toast" role="status"></div>
+<script src="app.js"></script>
+</body>
+</html>
