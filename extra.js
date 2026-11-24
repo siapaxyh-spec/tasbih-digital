@@ -8,8 +8,7 @@ const row=(k,l)=>`<label class="row"><span>${l}</span><input type="checkbox" dat
 
 /* Sisipkan UI */
 $('.kpi').insertAdjacentHTML('beforebegin','<div class="goal glass" id="goal"><i id="gBar"></i><span id="gTxt"></span></div>');
-$('.ic').insertAdjacentHTML('afterbegin','<button id="bBk" aria-label="Layar gelap">◐</button><button id="bLk" aria-label="Kunci"></button>');
-document.body.insertAdjacentHTML('beforeend','<div id="blk"><small>Tahan lama untuk keluar</small></div>');
+$('.ic').insertAdjacentHTML('afterbegin','<button id="bIb" aria-label="Ibadah">☪</button><button id="bLk" aria-label="Kunci"></button>');
 $('#sh-zk h2').insertAdjacentHTML('afterend','<h3>Rangkaian zikir</h3><div class="chs" id="chs">'+CH.map((c,k)=>`<button data-ch="${k}">${c.n}</button>`).join('')+'<button data-ch="-1">Berhenti</button></div><h3>Daftar zikir</h3>');
 $('#sh-st h3').insertAdjacentHTML('beforebegin','<h3>35 hari terakhir</h3><div class="cal" id="cal"></div><h3>Lencana</h3><div id="bdg"></div><h3>Tantangan 40 hari</h3><div class="goal glass" id="cg"><i></i><span></span></div><button class="btn2" id="bShare">Bagikan pencapaian</button>');
 $('#sh-se h3').insertAdjacentHTML('beforebegin',row('nolat','Sembunyikan latin dan arti')+'<label class="row"><span>Ukuran teks Arab</span><input type="range" id="sz" min="22" max="44"></label>');
@@ -54,11 +53,6 @@ const lk=()=>{$('#bLk').textContent=S.lk?'🔒':'🔓'};
 $('#bLk').onclick=()=>{S.lk=!S.lk;save();lk();toast(S.lk?'Terkunci':'Terbuka')};
 document.addEventListener('click',e=>{if(S.lk&&e.target.closest('#bUndo,#bReset,#bSave,#bSe,.chips,#zk')){e.stopPropagation();e.preventDefault();toast('Terkunci. Ketuk ikon gembok untuk membuka')}},true);
 const u0=undo;undo=()=>S.lk?toast('Terkunci'):u0();
-let ht,lng;const blk=$('#blk');
-$('#bBk').onclick=()=>blk.classList.add('on');
-blk.onpointerdown=()=>{lng=0;ht=setTimeout(()=>{lng=1;blk.classList.remove('on');vib(40)},1000)};
-blk.onpointerup=()=>{clearTimeout(ht);if(!lng)tap()};
-blk.onpointercancel=blk.onpointerleave=()=>clearTimeout(ht);
 
 /* Tampilan, tema otomatis, pengaturan */
 function view(){document.documentElement.style.setProperty('--sz',(S.set.sz||30)+'px');document.body.classList.toggle('nolat',!!S.set.nolat)}
