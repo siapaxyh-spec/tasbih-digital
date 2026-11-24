@@ -107,3 +107,8 @@ body[data-theme=kontras]{--a:#ffe14d;--b:#fff;--bg1:#000;--bg2:#000;--tx:#fff;--
 #blk.on{display:flex}
 #blk small{animation:fd 3s forwards}
 @keyframes fd{to{opacity:0}}
+.chs .on{background:var(--a);border-color:var(--a);color:#06241a}
+#ibp{margin-top:14px}#ibp ul{margin-bottom:10px}
+#ibp li[data-sl],#ibp li[data-pz]{cursor:pointer}
+.qb{display:grid;place-items:center;height:200px}
+#qAr{font-size:90px;color:var(--a);transition:transform .2s}
